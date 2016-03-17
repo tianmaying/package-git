@@ -14,7 +14,7 @@
     "dependencies": {
         "q": "1.2.0",
         "lodash": "3.x.x || 2.4.x",
-        "gittle": "~0.2.3",
+        "gittle": "github:tianmaying/gittle.js",
         "stringify": "3.1.0"
     },
     "browserify": {
