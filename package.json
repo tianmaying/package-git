@@ -8,8 +8,8 @@
         "codebox": ">=1.0.0-alpha"
     },
     "packageDependencies": {
-        "menubar": "CodeboxIDE/package-menubar",
-        "statusbar": "CodeboxIDE/package-statusbar"
+        "menubar": "tianmaying/package-menubar",
+        "statusbar": "tianmaying/package-statusbar"
     },
     "dependencies": {
         "q": "1.2.0",
