@@ -43,7 +43,7 @@ var handleHttpAuth = function(method) {
             var fields = {
                 username: {
                     type: "string",
-                    decription: "Username"
+                    description: "Username"
                 },
                 password: {
                     type: "string",
@@ -63,7 +63,7 @@ var handleHttpAuth = function(method) {
             }
 
             return dialogs.schema({
-                title: "Need authentication:",
+                title: "需要验证:",
                 properties: fields
             })
             .then(method);
@@ -92,7 +92,7 @@ var selectBranch = function() {
 
 cmdBranchSwitch = commands.register({
     id: "git.branch.change",
-    title: "Git: Switch To Branch",
+    title: "Git: 切换分支",
     run: function(args, context) {
         return selectBranch()
         .then(function(branch) {
@@ -110,7 +110,7 @@ cmdBranchSwitch = commands.register({
 
 cmdBranchCreate = commands.register({
     id: "git.branch.create",
-    title: "Git: Create New Branch",
+    title: "Git: 创建分支",
     run: function(args, context) {
         return dialogs.prompt("Create a branch")
         .then(function(branch) {
@@ -128,7 +128,7 @@ cmdBranchCreate = commands.register({
 
 cmdBranchDelete = commands.register({
     id: "git.branch.delete",
-    title: "Git: Delete a Branch",
+    title: "Git: 删除分支",
     run: function(args, context) {
         return selectBranch()
         .then(function(branch) {
@@ -148,7 +148,7 @@ cmdBranchDelete = commands.register({
 
 cmdInit = commands.register({
     id: "git.init",
-    title: "Git: Init",
+    title: "Git: 初始化(Init)",
     run: function(args, context) {
         return updateStatus(rpc.execute("git/init"));
     }
@@ -156,7 +156,7 @@ cmdInit = commands.register({
 
 cmdClone = commands.register({
     id: "git.clone",
-    title: "Git: Clone Remote",
+    title: "Git: Clone仓库",
     run: function(args, context) {
         return dialogs.prompt("Clone repository:")
         .then(function(url) {
@@ -179,7 +179,7 @@ cmdClone = commands.register({
 
 cmdCommit = commands.register({
     id: "git.commit",
-    title: "Git: Commit Changes",
+    title: "Git: 提交(Commit)",
     run: function(args, context) {
         return dialogs.schema({
             title: "Commit Changes:",
@@ -220,7 +220,7 @@ cmdCommit = commands.register({
 
 cmdStatus = commands.register({
     id: "git.status",
-    title: "Git: Status",
+    title: "Git: 状态(Status)",
     run: function() {
         return updateStatus()
         .fail(dialogs.error)
@@ -250,7 +250,7 @@ cmdStatus = commands.register({
 
 cmdPush = commands.register({
     id: "git.push",
-    title: "Git: Push",
+    title: "Git: 推送(Push)",
     run: function() {
         return codebox.statusbar.loading(
             handleHttpAuth(function(creds) {
@@ -265,7 +265,7 @@ cmdPush = commands.register({
 
 cmdPull = commands.register({
     id: "git.pull",
-    title: "Git: Pull",
+    title: "Git: 拉取(Pull)",
     run: function() {
         return codebox.statusbar.loading(
             handleHttpAuth(function(creds) {
@@ -280,7 +280,7 @@ cmdPull = commands.register({
 
 cmdSync = commands.register({
     id: "git.sync",
-    title: "Git: Sync",
+    title: "Git: 同步(Sync)",
     run: function() {
         return codebox.statusbar.loading(
             handleHttpAuth(function(creds) {
@@ -295,45 +295,45 @@ cmdSync = commands.register({
 
 codebox.menubar.createMenu({
     id: "git",
-    caption: "GIT Repository",
+    caption: "Git仓库",
     items: [
         {
-            caption: "Init Repository",
+            caption: "初始化(Init)仓库",
             command: "git.init"
         },
         {
-            caption: "Clone Repository",
+            caption: "克隆(Clone)仓库",
             command: "git.clone"
         },
         { type: "separator" },
         {
-            caption: "Commit Changes",
+            caption: "提交(Commit)代码",
             command: "git.commit"
         },
         {
-            caption: "Status",
+            caption: "状态(Status)",
             command: "git.status"
         },
         { type: "separator" },
         {
-            caption: "Push Changes",
+            caption: "推送(Push)",
             command: "git.push"
         },
         {
-            caption: "Pull Changes",
+            caption: "拉取(Pull)",
             command: "git.pull"
         },
         { type: "separator" },
         {
-            caption: "Switch Branch...",
+            caption: "切换分支...",
             command: "git.branch.change"
         },
         {
-            caption: "Create New Branch",
+            caption: "创建分支",
             command: "git.branch.create"
         },
         {
-            caption: "Delete a Branch",
+            caption: "删除分支",
             command: "git.branch.delete"
         }
     ]
